@@ -6,12 +6,12 @@ int main(int ac, char *av[]) {
 	if (ac != 2) {
 		return 1;
 	}
-	// std::strlen(av[1]);
-	for (int i = 0; i < std::strlen(av[1]); i++) {
-		if (std::islower(av[1][i])) {
-			av[1][i] = std::toupper(av[1][i]);
+	auto str = std::string(av[1]);
+	for (auto& symbol : str) {
+		if (std::islower(symbol)) {
+			symbol = std::toupper(symbol);
 		}
-		std::cout << av[1][i];
+		std::cout << symbol;
 	}
 	std::cout << std::endl;
 	return 0;
