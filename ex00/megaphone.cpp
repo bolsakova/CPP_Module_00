@@ -1,15 +1,18 @@
 #include <iostream>
-#include <string>
+#include <cstring>
 #include <cctype>
 
-int main() {
-	std::string str_1;
-	std::string str_2 = ;
-
-	std::getline()
-
-	for (int i = 0; i < str.length; i++) {
-		std::cout
+int main(int ac, char *av[]) {
+	if (ac != 2) {
+		return 1;
 	}
-	std::cout
+	// std::strlen(av[1]);
+	for (int i = 0; i < std::strlen(av[1]); i++) {
+		if (std::islower(av[1][i])) {
+			av[1][i] = std::toupper(av[1][i]);
+		}
+		std::cout << av[1][i];
+	}
+	std::cout << std::endl;
+	return 0;
 }
