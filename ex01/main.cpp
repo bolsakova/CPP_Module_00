@@ -31,7 +31,6 @@ int main() {
 			contact.setPhone(field_data[3]);
 			contact.setDarkestSecret(field_data[4]);
 			phonebook.addContact(contact);
-			std::cout << std::endl;
 		}
 		else if (command == "SEARCH") {
 			phonebook.showContactsList();

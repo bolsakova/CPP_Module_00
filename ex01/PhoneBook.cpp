@@ -33,8 +33,10 @@ std::string Contact::getDarkestSecret() const {
 }
 
 void Phonebook::addContact(Contact newContact) {
+	
 	if (count < 8) {
 		contacts[count] = newContact;
+		oldest = count;
 		count++;
 	}
 	else if (count == 8) {
@@ -43,10 +45,10 @@ void Phonebook::addContact(Contact newContact) {
 		if (oldest == 8)
 			oldest = 0;
 	}
-	std::cout << count << std::endl;
+	std::cout << std::endl;
 }
 void Phonebook::showContactsList() {
-	std::cout << count << std::endl;
+	std::cout << std::endl;
 	if (count == 0)
 		std::cout << "Phonebook is empty :(" << std::endl;
 	else {
@@ -74,6 +76,7 @@ std::string Phonebook::formatField(std::string field) {
 	return 0;
 }
 void Phonebook::showContactDetails(int index) {
+	std::cout << std::endl;
 	if (index >= 1 && index <= count) {
 		std::cout << "First name: " << contacts[index - 1].getFirstName() << std::endl;
 		std::cout << "Last name: " << contacts[index - 1].getLastName() << std::endl;
