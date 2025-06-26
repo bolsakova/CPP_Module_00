@@ -3,8 +3,8 @@
 #include <iostream>
 #include <iomanip>
 
-int Account::_nbAccounts = 8;
-int Account::_totalAmount = 20049;
+int Account::_nbAccounts = 0;
+int Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
 
@@ -44,12 +44,42 @@ void	Account::displayAccountsInfos( void ) {
 	std::cout << ";withdrawals:" << Account::getNbWithdrawals() << std::endl;
 }
 
-// to learn
+// конструктор - функция создания объекта
+//
+// ЧТО ПРОИСХОДИТ?
+// 1. выделяется память для всех переменных объекта
+// 2. вызывается конструктор
+// 3. инициализируются переменные объекта
+//
+// ЧТО "КОНСТРУИРУЕТСЯ"?
+// 1. переменные экземпляра (для каждого объекта свои): 
+// 		_accountIndex (номер аккаунта - 0,1,2,3),
+//		_amount (сумма на счету этого аккаунта),
+// 		_nbDeposits (кол-во пополнений этого аккаунта),
+// 		_nbWithdrawals (кол-во снятий с этого аккаунта)
+// 2. статистические переменные (общие для всех объектов):
+//		_nbAccounts (общее кол-во аккаунтов)
+//		_totalAmount (общая сумма во всех аккаунтах)
+//		_totalNbDeposits (общее кол-во всех пополнений)
+//		_totalNbWithdrawals (общее кол-во всех снятий)
 Account::Account( int initial_deposit ) {
+	_accountIndex = _nbAccounts;
+	_nbAccounts++;
 
+	_amount = initial_deposit;
+	_nbDeposits = 0;
+	_nbWithdrawals = 0;
+
+	_totalAmount += initial_deposit;
+	// вывод сообщения со всей информацией
+	_displayTimestamp();
+	std::cout	<< "index:" << _accountIndex
+				<< ";amount:" << _amount
+				<< ";created" << std::endl;
 }
+// деструктор 
 Account::~Account( void ) {
-	
+
 }
 
 void	Account::makeDeposit( int deposit ) {
