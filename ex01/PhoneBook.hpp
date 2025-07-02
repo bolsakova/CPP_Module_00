@@ -1,31 +1,7 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
-# include <iostream>
-# include <iomanip>
-# include <string>
-
-class Contact {
-private:
-	std::string FirstName;
-	std::string LastName;
-	std::string Nickname;
-	std::string Phone;
-	std::string DarkestSecret;
-
-public:
-	void setFirstName(std::string newFirstName);
-	void setLastName(std::string newLastName);
-	void setNickname(std::string newNickname);
-	void setPhone(std::string newPhone);
-	void setDarkestSecret(std::string newDarkestSecret);
-
-	std::string getFirstName() const;
-	std::string getLastName() const;
-	std::string getNickname() const;
-	std::string getPhone() const;
-	std::string getDarkestSecret() const;
-};
+# include "Contact.hpp"
 
 class Phonebook {
 private:

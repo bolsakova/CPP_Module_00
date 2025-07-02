@@ -44,6 +44,11 @@ int main() {
 				std::getline(std::cin, index_str);
 				if (std::cin.eof() || std::cin.fail())
 					return 0;
+				// проверяем весь диапазон строки, состоит ли он из цифр
+				if (!std::all_of(index_str.begin(), index_str.end(), ::isdigit)) {
+					std::cout << std::endl << "No such index :(" << std::endl << std::endl;
+					continue;
+				}
 				int index_num = std::stoi(index_str);
 				phonebook.showContactDetails(index_num);
 			}
