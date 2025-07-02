@@ -14,6 +14,8 @@ int main() {
 		std::cout << "Enter the command you would like to use :)" << std::endl;
 		std::string command;
 		std::getline(std::cin, command);
+		if (std::cin.eof() || std::cin.fail())
+			return 0;
 		if (command == "ADD") {
 			Contact contact;
 			// создан массив с подсказками, чтобы программа их печатала поочередно
@@ -23,6 +25,8 @@ int main() {
 				while (field_data[i] == "") {
 					std::cout << prompts[i];
 					std::getline(std::cin, field_data[i]);
+					if (std::cin.eof() || std::cin.fail())
+						return 0;
 				}
 			}
 			contact.setFirstName(field_data[0]);
@@ -38,6 +42,8 @@ int main() {
 				std::string index_str; // input is always with type string
 				std::cout << "Enter index of chosen Contact: ";
 				std::getline(std::cin, index_str);
+				if (std::cin.eof() || std::cin.fail())
+					return 0;
 				int index_num = std::stoi(index_str);
 				phonebook.showContactDetails(index_num);
 			}
