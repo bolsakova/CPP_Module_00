@@ -9,9 +9,8 @@
 
 #include <vector>
 #include <algorithm>
-#include <+functional>
+#include <functional>
 #include "Account.hpp"
-
 
 int		main( void ) {
 

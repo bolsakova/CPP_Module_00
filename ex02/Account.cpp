@@ -111,15 +111,58 @@ Account::~Account( void ) {
 				<< ";closed" << std::endl;
 }
 
+// пополняет счёт
+// 		p_amount - предыдущая сумма (previous amount)
+// 		deposit - размер депозита
+// 		amount - новая сумма
+// 		nb_deposits - количество депозитов для этого аккаунта
 void	Account::makeDeposit( int deposit ) {
-
+	// вывести timestamp и начальную информацию
+	_displayTimestamp();
+	std::cout	<< "index:" << _accountIndex
+				<< ";p_amount:" << _amount; // показать старую сумму
+	// обновить данные
+	_amount += deposit;			// увеличить сумму аккаунта
+	_nbDeposits++;				// увеличить счётчик депозитов аккаунта
+	_totalAmount += deposit;	// увеличить общую сумму
+	_totalNbDeposits++;			// увеличить общий счётчик депозитов
+	// вывести остальную информацию
+	std::cout	<< ";deposit:" << deposit
+				<< ";amount:" << _amount		// показать новую сумму
+				<< ";nb_deposits:" << _nbDeposits << std::endl;
 }
 bool	Account::makeWithdrawal( int withdrawal ) {
-
+	// вывести timestamp и начальну информацию
+	_displayTimestamp();
+	std::cout	<< "index:" << _accountIndex
+				<< ";p_amount:" << _amount;		// показать старую сумму
+	// проверить: хватает ли денег?
+	if (withdrawal > _amount) {
+		// НЕ хватает денег - отказ
+		std::cout << ";withdrawal:refused" << std::endl;
+		return false;
+	}
+	// хватает денег - снимаем
+	// обновить переменные только при успешном снятии
+	_amount -= withdrawal;			// уменьшаем сумму аккаунта
+	_nbWithdrawals++;				// увеличиваем счетчик снятий аккаунта
+	_totalAmount -= withdrawal;		// уменьшаем общую сумму
+	_totalNbWithdrawals++;			// увеличиваем общий счётчик снятий
+	// вывести информацию об успешном снятии
+	std::cout	<< ";withdrawal:" << withdrawal
+				<< ";amount:" << _amount		// показать новую сумму
+				<< ";nb_withdrawals:" << _nbWithdrawals << std::endl;
+	return true;
 }
+// возвращает текущую сумму на счету
 int		Account::checkAmount( void ) const {
-
+	return _amount;
 }
+// выводит информацию о состоянии аккаунта
 void	Account::displayStatus( void ) const {
-	
+	_displayTimestamp();
+	std::cout	<< "index:" << _accountIndex
+				<< ";amount:" << _amount
+				<< ";deposits:" << _nbDeposits
+				<< ";withdrawals:" << _nbWithdrawals << std::endl;
 }
