@@ -1,31 +1,18 @@
 #include <iostream>
 #include <string>
-// #include <cstring>
-// #include <cctype>
-
-// int main(int ac, char *av[]) {
-// 	if (ac != 2) {
-// 		return 1;
-// 	}
-// 	auto str = std::string(av[1]);
-// 	for (auto& symbol : str) {
-// 		if (std::islower(symbol)) {
-// 			symbol = std::toupper(symbol);
-// 		}
-// 		std::cout << symbol;
-// 	}
-// 	std::cout << std::endl;
-// 	return 0;
-// }
 
 int main(int ac, char *av[]) {
-	if (ac != 2)
-		return 1;
-	std::string str = av[1];
-	for (size_t i = 0; i < str.length(); i++) {
-		if (std::islower(str[i]))
-			str[i] = std::toupper(str[i]);
-		std::cout << str[i];
+	if (ac == 1)
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
+	else {
+		for (int j = 1; j < ac; j++) {
+			std::string str = av[j];
+			for (size_t i = 0; i < str.length(); i++) {
+				if (std::islower(str[i]))
+					str[i] = std::toupper(str[i]);
+				std::cout << str[i];
+			}
+		}
 	}
 	std::cout << std::endl;
 	return 0;

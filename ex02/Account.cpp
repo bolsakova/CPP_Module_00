@@ -8,6 +8,7 @@ int Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
 
+// временная метка
 void Account::_displayTimestamp( void ) {
 	std::time_t t = std::time(0);		// получить текущее время с 1 января 1970 года (Unix timestamp)
 	std::tm* now = std::localtime(&t);	// преобразовать в структуру tm, котоая содержит год, месяц, день, час, минуту, секунду

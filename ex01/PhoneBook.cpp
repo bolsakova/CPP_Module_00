@@ -14,6 +14,7 @@ void Phonebook::addContact(Contact newContact) {
 	}
 	std::cout << std::endl;
 }
+
 void Phonebook::showContactsList() {
 	std::cout << std::endl;
 	if (count == 0)
@@ -28,6 +29,7 @@ void Phonebook::showContactsList() {
 		std::cout << std::endl;
 	}
 }
+
 std::string Phonebook::formatField(std::string field) {
 	std::string formattedField;
 	if (field.length() > 10) {
@@ -42,6 +44,7 @@ std::string Phonebook::formatField(std::string field) {
 	}
 	return 0;
 }
+
 void Phonebook::showContactDetails(int index) {
 	std::cout << std::endl;
 	if (index >= 1 && index <= count) {
